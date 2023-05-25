@@ -41,7 +41,7 @@ def search(book: str, info: str) -> list[str]:
 
 def delet_data() -> None:
     """Удаляет результат поиска по справочнику."""
-    with open('book.txt', 'w+', encoding='utf-8') as file:
+    with open('book.txt', 'r', encoding='utf-8') as file:
         data = file.read()
     contact_to_find = input('Введите, что хотите удалить:  ')
     result = search(data, contact_to_find)
@@ -55,14 +55,14 @@ def delet_data() -> None:
     
 def change_data() -> None:
     """Изменяет результат поиска по справочнику."""
-    with open('book.txt', 'w+', encoding='utf-8') as file:
+    with open('book.txt', 'r+', encoding='utf-8') as file:
     data = file.read()
     contact_to_find = input('Введите, что хотите изменить:  ')
     result = search(data, contact_to_find)
     print(result)
     if len(result) == 1:
-        fio = input('Введите ФИО: ')
-        phone_num = input('Введите номер телефона: ')
+        fio = input('Измените ФИО: ')
+        phone_num = input('Измените номер телефона: ')
         with open('book.txt', 'a', encoding='utf-8') as book:
             book.write(f'\n{fio} | {phone_num}')
     elif len(result) > 1:
